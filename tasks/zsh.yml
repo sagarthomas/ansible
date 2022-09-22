@@ -1,5 +1,6 @@
 - name: Install zsh
   apt: name=zsh
+  become: true
   tags:
     - zsh
 - name: Change shell
