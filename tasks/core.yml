@@ -1,0 +1,10 @@
+- name: Install Go
+  become: true
+  ansible.builtin.unarchive:
+    src: https://golang.org/dl/go1.18.5.linux-amd64.tar.gz
+    dest: /usr/local/
+    remote_src: yes
+  tags:
+    - core
+
+

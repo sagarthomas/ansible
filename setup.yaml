@@ -9,4 +9,5 @@
   tasks:
     - include: tasks/zsh.yml
     - include: tasks/node.yml
+    - include: tasks/core.yml
 
