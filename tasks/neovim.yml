@@ -1,0 +1,38 @@
+- name: Install Neovim build Prerequisites
+  become: true
+  apt:
+    name:
+      - ninja-build 
+      - gettext 
+      - libtool 
+      - libtool-bin 
+      - autoconf 
+      - automake 
+      - cmake 
+      - g++ 
+      - pkg-config 
+      - unzip 
+      - curl 
+      - doxygen
+  tags: 
+    - neovim
+- name: Clone Neovim
+  ansible.builtin.git:
+    repo: https://github.com/neovim/neovim
+    dest: ~/neovim
+  tags:
+    - neovim
+
+- name: Build Neovim
+  shell: cd ~/neovim && make CMAKE_BUILD_TYPE=RelWithDebInfo
+  tags:
+    - neovim
+
+- name: Install Neovim
+  become: true
+  shell: cd ~/neovim && make install
+  tags:
+    - neovim
+
+# Copy dotfile config to proper location, install packer, Run packer sync automatically?, install fzf (maybe in core.yaml)
+
