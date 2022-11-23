@@ -24,7 +24,7 @@
     - neovim
 
 - name: Build Neovim
-  shell: cd ~/neovim && make CMAKE_BUILD_TYPE=RelWithDebInfo
+  shell: cd ~/neovim && make CMAKE_BUILD_TYPE=Release CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=$HOME/.local/neovim"
   tags:
     - neovim
 
