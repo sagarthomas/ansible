@@ -24,13 +24,13 @@
     - neovim
 
 - name: Build Neovim
-  shell: cd ~/neovim && make CMAKE_BUILD_TYPE=Release CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=$HOME/.local/neovim"
+  shell: cd ~/neovim && make CMAKE_BUILD_TYPE=Release 
   tags:
     - neovim
 
 - name: Install Neovim
   become: true
-  shell: cd ~/neovim && make install
+  shell: cd {{ lookup('env', 'HOME')}}/neovim && make install
   tags:
     - neovim
 
