@@ -11,12 +11,6 @@
     dest: ~/.zsh/zsh-autosuggestions
   tags:
     - zsh
-- name: Clone dotfiles repo
-  ansible.builtin.git:
-    repo: https://github.com/sagarthomas/dotfiles.git
-    dest: ~/dotfiles
-  tags:
-    - zsh
 - name: Clone Pure zsh theme
   ansible.builtin.git: 
     repo: https://github.com/sindresorhus/pure.git
@@ -30,6 +24,6 @@
   tags:
     - zsh
 - name: Set up .zshrc
-  shell: cp ~/dotfiles/.zshrc ~/
+  shell: cp ~/config/dotfiles/.zshrc ~/
   tags:
     - zsh

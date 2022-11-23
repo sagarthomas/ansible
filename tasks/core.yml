@@ -1,3 +1,11 @@
+- name: Clone dotfiles repo
+  ansible.builtin.git:
+    repo: https://github.com/sagarthomas/dotfiles.git
+    dest: ~/config/dotfiles
+  tags:
+    - core
+    - zsh
+
 - name: Install Go
   become: true
   ansible.builtin.unarchive:
@@ -6,5 +14,54 @@
     remote_src: yes
   tags:
     - core
+- name: Install fzf
+  apt: name=fzf
+  become: true
+  tags:
+    - core 
 
+- name: Install tmux
+  apt: name=tmux
+  become: true
+  tags:
+    - core 
 
+- name: Install tmux theme
+  ansible.builtin.git:
+    repo: https://github.com/o0th/tmux-nova.git
+    dest: ~/.tmux/plugins/tmux-nova
+  tags:
+    - core
+
+- name: Copy tmux configuration
+  ansible.builtin.copy:
+    src: ~/config/dotfiles/.tmux.conf
+    dest: ~/
+  tags:
+    - core
+
+- name: Create local bin directory
+  ansible.builtin.file:
+    path: ~/.local/bin
+    state: directory
+  tags:
+    - core
+
+- name: Set up tmux-sessionizer script
+  ansible.builtin.copy:
+    src: ~/config/dotfiles/tmux-sessionizer
+    dest: ~/.local/bin
+  tags: 
+    - core
+
+- name: Install bat
+  apt: name=bat
+  become: true
+  tags:
+    - core 
+
+- name: Install exa
+  apt: name=exa
+  become: true
+  tags:
+    - core 
