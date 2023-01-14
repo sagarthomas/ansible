@@ -7,3 +7,8 @@
     global: true
 - name: Install node v14
   shell: n 14
+
+#TODO: Implement commands here: https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally
+# to handle permission issues with node installation
+# TODO: Need to set N_PREFIX so n doesn't install in a sudo location. Requires adding custom path to $PATH
+# TODO: Remove initial node install from apt so the n one is used
